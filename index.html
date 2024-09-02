@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ship Route Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <ul>
+                <li><a href="#">Weather</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="ports.html">Ports</a></li>
+            </ul>
+        </nav>
+        <h1>Ship Route Weather App</h1>
+        <img src="bg.jpg" alt="Img-Bg" class="Bg-Img">
+        <form id="weatherForm">
+            <div class="search-bar">
+                <input type="text" id="sourceInput" placeholder="Enter source city" required>
+                <button type="button" id="swapButton">&#8644;</button>
+                <input type="text" id="destinationInput" placeholder="Enter destination city" required>
+            </div>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weatherResult" class="weather-result">
+        </div>
+        <a href="ports.html" id="portsLink">
+            <img src="icon.png" alt="Navigate to ports" class="navigate-icon">
+        </a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
