@@ -3,25 +3,27 @@ body, html {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 .container {
     position: relative;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9); 
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 80%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 600px;
     margin: 0 auto;
+    top: 20px; 
 }
 
 .top-nav {
     width: 100%;
     background-color: #007BFF;
-    padding: 10px 0;
+    padding: 12px 0;
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -41,9 +43,10 @@ body, html {
 .top-nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px 20px;
+    font-size: 16px;
+    padding: 12px 20px;
     border-radius: 4px;
+    transition: background-color 0.3s ease; 
 }
 
 .top-nav ul li a:hover {
@@ -52,18 +55,20 @@ body, html {
 
 h1 {
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
 }
 
 .search-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 input[type="text"] {
     padding: 10px;
-    width: 40%;
+    width: 45%;
     margin: 0 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -76,24 +81,32 @@ button[type="button"] {
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 18px;
+    font-size: 20px; 
+    transition: background-color 0.3s ease; 
+}
+
+button[type="button"]:hover {
+    background-color: #0056b3;
 }
 
 button[type="submit"] {
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: #007BFF;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
 }
 
-button:hover {
+button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
 .weather-result {
     margin-top: 20px;
+    text-align: left;
 }
 
 .weather-result p {
@@ -106,6 +119,11 @@ button:hover {
     right: 20px;
     width: 50px;
     cursor: pointer;
+    transition: opacity 0.3s ease; 
+}
+
+.navigate-icon:hover {
+    opacity: 0.8;
 }
 
 .Bg-Img {
@@ -115,6 +133,56 @@ button:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1; 
-    opacity: 0.5; 
+    z-index: -1;
+    opacity: 0.4; 
+}
+
+.place-picker-container {
+    padding: 20px;
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.scrollable {
+    height: 54rem;
+    width: 35rem; 
+    overflow-y: auto; 
+    border: 1px solid #ccc; 
+    padding: 10px;
+}
+
+.wikitable {
+    border: 1px solid #a2a9b1;
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.wikitable th, .wikitable td {
+    border: 1px solid #a2a9b1;
+    padding: 8px;
+    text-align: left;
+}
+
+.wikitable th {
+    background-color: #f2f2f2;
+    cursor: pointer; 
+}
+
+.wikitable th:hover {
+    background-color: #e9ecef; 
+}
+
+.wikitable tr:nth-child(even) {
+    background-color: #f9f9f9; 
+}
+
+.wikitable tr:hover {
+    background-color: #f1f1f1;
 }

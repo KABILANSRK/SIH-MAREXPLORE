@@ -11,10 +11,11 @@ document.getElementById('weatherForm').addEventListener('submit', function(e) {
     
     const source = document.getElementById('sourceInput').value;
     const destination = document.getElementById('destinationInput').value;
-    const apiKey = '572fcba1474d3164788c75769a648cd5'; //API KEY
+    const apiKey = '572fcba1474d3164788c75769a648cd5';
 
     const sourceUrl = `https://api.openweathermap.org/data/2.5/weather?q=${source}&appid=${apiKey}&units=metric`;
     const destinationUrl = `https://api.openweathermap.org/data/2.5/weather?q=${destination}&appid=${apiKey}&units=metric`;
+    
     Promise.all([fetch(sourceUrl), fetch(destinationUrl)])
         .then(responses => Promise.all(responses.map(response => response.json())))
         .then(data => {
