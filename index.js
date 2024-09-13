@@ -1,49 +1,19 @@
-function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 5,
-      center: { lat: 37.7749, lng: -122.4194 }
+let map;
+
+async function initMap() {
+  const position = { lat: -25.344, lng: 131.031 };
+  const { Map } = await google.maps.importLibrary("maps");
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  map = new Map(document.getElementById("map"), {
+    zoom: 4,
+    center: position,
+    mapId: "DEMO_MAP_ID",
   });
-
-  const input = document.getElementById("search-input");
-  const searchBox = new google.maps.places.SearchBox(input);
-  map.addListener("bounds_changed", () => {
-      searchBox.setBounds(map.getBounds());
-  });
-
-  let markers = [];
-  searchBox.addListener("places_changed", () => {
-      const places = searchBox.getPlaces();
-
-      if (places.length == 0) {
-          return;
-      }
-
-      markers.forEach((marker) => marker.setMap(null));
-      markers = [];
-
-      const bounds = new google.maps.LatLngBounds();
-      places.forEach((place) => {
-          if (!place.geometry || !place.geometry.location) {
-              console.log("Returned place contains no geometry");
-              return;
-          }
-
-          const marker = new google.maps.Marker({
-              map,
-              title: place.name,
-              position: place.geometry.location,
-          });
-
-          markers.push(marker);
-
-          if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport);
-          } else {
-              bounds.extend(place.geometry.location);
-          }
-      });
-      map.fitBounds(bounds);
+  const marker = new AdvancedMarkerElement({
+    map: map,
+    position: position,
+    title: "Uluru",
   });
 }
 
-window.initMap = initMap;
+initMap();

@@ -1,16 +1,67 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>City Search Map</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgz5w6nEDSE3nbBZoxJ4jMaU1cyKBE9tY&libraries=places" async defer></script>
-    <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-    <div class="container">
-        <h1>Search for a City</h1>
-        <input id="search-input" class="controls" type="text" placeholder="Enter a city name">
-        <div id="map"></div>
-    </div>
-    <script src="script.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Globe with Visible Indian Ocean Harbors</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      #globe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="globe"></div>
+
+    <!-- Include Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Include Globe.js -->
+    <script src="https://unpkg.com/globe.gl"></script>
+
+    <script>
+      // Data: list of harbor locations in the Indian Ocean with enhanced visibility
+      const harbors = [
+        { lat: 6.9271, lng: 79.8612, size: 0.01, color: 'red', name: 'Port of Colombo' },   // Sri Lanka
+        { lat: 18.9523, lng: 72.8479, size: 0.01, color: 'blue', name: 'Port of Mumbai' },   // India
+        { lat: 9.9312, lng: 76.2673, size: 0.01, color: 'green', name: 'Port of Kochi' },    // India
+        { lat: -4.0435, lng: 39.6682, size: 0.01, color: 'yellow', name: 'Port of Mombasa' }, // Kenya
+        { lat: -20.1609, lng: 57.5012, size: 0.01, color: 'purple', name: 'Port Louis' },    // Mauritius
+        { lat: -29.8587, lng: 31.0218, size: 0.01, color: 'orange', name: 'Port of Durban' },// South Africa
+        { lat: -32.0508, lng: 115.7467, size: 0.01, color: 'pink', name: 'Port of Fremantle' }, // Australia
+        { lat: 16.9604, lng: 54.0097, size: 0.01, color: 'cyan', name: 'Port of Salalah' },   // Oman
+        { lat: 4.1755, lng: 73.5093, size: 0.01, color: 'magenta', name: 'Port of Male' },    // Maldives
+      ];
+
+      // Initialize the 3D globe
+      const myGlobe = Globe()
+        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+        .pointsData(harbors)  // Add markers for harbors
+        .pointAltitude('size')  // Marker size based on 'size' property
+        .pointColor('color')    // Marker color based on 'color' property
+        .labelText('name')      // Show the name of the harbor
+        .labelSize(3)           // Increase label size for visibility
+        .labelAltitude(0.03)    // Raise labels significantly above the globe for better visibility
+        .labelColor(() => 'white')  // Set label color to white for contrast
+        .pointRadius(0.5)       // Adjust marker size for visibility
+        (document.getElementById('globe'));
+
+      // Optional: spin the globe
+      (function rotate() {
+        myGlobe.controls().autoRotate = true;
+        myGlobe.controls().autoRotateSpeed = 0.5;
+      })();
+    </script>
+  </body>
 </html>

@@ -150,7 +150,7 @@ button[type="submit"]:hover {
 }
 
 .scrollable {
-    height: 54rem;
+    height: 37rem;
     width: 35rem; 
     overflow-y: auto; 
     border: 1px solid #ccc; 
